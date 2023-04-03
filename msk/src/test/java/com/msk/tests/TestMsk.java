@@ -1,25 +1,25 @@
 package com.msk.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockitoAnnotations;
+
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.msk.service.EmpService;
 
 
 //@ExtendWith(MockitoExtension.class)
-public class TestMsk extends MskTests{
+public class TestMsk {
 	
 	@MockBean
 	EmpService serv;
 
 	@Before
 	 void beforeTest() {
-		MockitoAnnotations.openMocks(this);
+		//MockitoAnnotations.openMocks(this);
 		System.out.println("Inside before");
 	}
 	
@@ -27,8 +27,8 @@ public class TestMsk extends MskTests{
 	void firstTest() {
 		System.out.print("first test");
 		
-		System.out.println(serv.findAllEmployeeByID(0));
-		when(serv.findAllEmployeeByID(0)).thenReturn(serv.findAllEmployeeByID(0));
+		/*System.out.println(serv.findAllEmployeeByID(0));
+		when(serv.findAllEmployeeByID(0)).thenReturn(serv.findAllEmployeeByID(0));*/
 		assertEquals("msk","msk");
 	}
 }

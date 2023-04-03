@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.msk.modal.Employee;
+import com.msk.modal.Person;
 import com.msk.serviceimpl.EmpServiceImpl;
 
 @RestController
@@ -29,27 +30,32 @@ public class MskController {
 	   private String name;
 	
 	@GetMapping("/getname")
-public String mskTest() {
-	return "SUCCESS"+name;
+public Person mskTest() throws InterruptedException {
+		
+		Thread.sleep(1000);
+		Person p = new Person();
+		p.setId(2);
+		p.setName(name);
+	return p;
 }
 	
-	@PostMapping("/")
-    public void add() {
-        empServiceImpl.addEmployee();
-    }
-  
-	@GetMapping("/findall")
-	public ArrayList<Employee> getAllEmployee() {
-	    return empServiceImpl.findAllEmployee();
-	}
-  
-    @GetMapping("/findbyid/{id}")
-    public Employee getEmployeeUsingId(@PathVariable long id) {
-        return empServiceImpl.findAllEmployeeByID(id);
-    }
-  
-    @DeleteMapping("/delete")
-    public void delete() {
-        empServiceImpl.deleteAllData();
-    }
+/*@PostMapping("/")
+public void add() {
+    empServiceImpl.addEmployee();
+}
+
+@GetMapping("/findall")
+public ArrayList<Employee> getAllEmployee() {
+    return empServiceImpl.findAllEmployee();
+}
+
+@GetMapping("/findbyid/{id}")
+public Employee getEmployeeUsingId(@PathVariable long id) {
+    return empServiceImpl.findAllEmployeeByID(id);
+}
+
+@DeleteMapping("/delete")
+public void delete() {
+    empServiceImpl.deleteAllData();
+}*/
 }
